@@ -5,8 +5,27 @@ const app = require('express')
 const server = app()
 const PORT = 1621
 const HOSTNAME = '0.0.0.0'
-server.listen(1621, '0.0.0.0', () => {
-    console.log('Server is running...')
+server.listen(PORT, HOSTNAME, () => {
+    console.log('Server is running in ${HOSTNAME}:${PORT}')
 } )
 
+let data = [
+    { 
+        id: 1,
+        name: 'Dog',
+    },
+    {
+        id: 2,
+        name: 'Cat'
+    },
+    {
+        id: 3,
+        name: 'Eagle',
+    
+    }
+]
+
+server.get('/api/data', (req,res) => {
+    return res.json(data)
+})
 
